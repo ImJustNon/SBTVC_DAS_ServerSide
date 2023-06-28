@@ -1,0 +1,25 @@
+{
+  "name": "sbtvc_dormitory_access_system_backend_api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node ./server.js",
+    "dev": "nodemon ./server.js"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.1.4",
+    "express": "^4.18.2",
+    "express-useragent": "^1.0.15",
+    "fs": "^0.0.1-security",
+    "morgan": "^1.10.0",
+    "mysql2": "^3.3.5",
+    "nodemon": "^2.0.22",
+    "path": "^0.12.7",
+    "qrcode": "^1.5.3",
+    "request": "^2.88.2"
+  }
+}
