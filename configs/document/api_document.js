@@ -2,6 +2,7 @@ const config = require("../config.js");
 
 module.exports = [
     {
+        url_path: "POST /api/users/add_student_user",
         title: "เพิ่มผู้ใช้นักเรียน (add_student_user)",
         req_res: {
             request: `
@@ -28,6 +29,7 @@ Json : {
         }
     },
     {
+        url_path: "POST /api/auth/esp/auth_receiver",
         title: "รับการยืนยันที่อยู่จากเครื่อง (auth_receiver)",
         req_res: {
             request: `
@@ -52,6 +54,7 @@ Json : {
         }
     },
     {
+        url_path: "GET /api/login/check_login_history",
         title: "ตรวจสอบการ Login (check_login_history)",
         req_res: {
             request: `
@@ -72,6 +75,7 @@ Json : {
         }
     },
     {
+        url_path: "GET /api/form/check_send_form_history",
         title: "ตรวจสอบการส่งฟอร์ม (check_send_form_history)",
         req_res: {
             request: `
@@ -101,6 +105,7 @@ Json : {
         }
     },
     {
+        url_path: "POST /api/test/chi_test_post",
         title: "ทดสอบการเชื่อมต่อ ESP8266 เข้ากับ API (chi_test_post)",
         req_res: {
             request: `
@@ -123,6 +128,7 @@ Json : {
         }
     },
     {
+        url_path: "GET /api/users/:student_id",
         title: "ขอข้อมูลนักเรียน (get_student_user_data)",
         req_res: {
             request: `
@@ -147,6 +153,7 @@ Json : {
         }
     },
     {
+        url_path: "GET /api/generator/qr_code_generator",
         title: "สร้าง QRcode (qr_code_generator)",
         req_res: {
             request: `
@@ -168,6 +175,7 @@ Json : {
         }
     },
     {
+        url_path: "POST /api/login/remove_login_history",
         title: "ลบบันทึกการ Login (remove_login_history)",
         req_res: {
             request: `
@@ -189,6 +197,7 @@ Json : {
         }
     },
     {
+        url_path: "POST /api/users/remove_student_user",
         title: "ลบผู้ใช้นักเรียน (remove_student_user)",
         req_res: {
             request: `
@@ -211,6 +220,7 @@ Json : {
         }
     },
     {
+        url_path: "POST /api/login/save_login_history",
         title: "บันทึกการ Login (save_login_history)",
         req_res: {
             request: `
@@ -235,6 +245,7 @@ Json : {
         }
     },
     {
+        url_path: "POST /api/form/send_form",
         title: "ส่งเเบบฟอร์มขอออก",
         req_res: {
             request: `

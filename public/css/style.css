@@ -48,7 +48,6 @@ section {
 h1,
 h2 {
     font-weight: 400;
-    text-transform: uppercase;
 }
 
 h2 {
@@ -75,7 +74,13 @@ h3 {
 }
 
 .apiDescription {
-    font-weight: 400;
+    background-color: #999;
+    color: #fff;
+    font-weight: 500;
+    font-size: medium;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
 }
 
 .container {
@@ -111,7 +116,8 @@ header {
 nav {
     background-color: #555;
     text-transform: uppercase;
-    
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 nav li {
 }
@@ -166,7 +172,7 @@ nav li a.active {
 
 /*Tabs*/
 .tabs .tab a {
-    color: #555
+    color: #555;
     font-size: 14px;
 }
 
