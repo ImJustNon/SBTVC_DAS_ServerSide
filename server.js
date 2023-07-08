@@ -22,7 +22,9 @@ const config = require("./configs/config.js");
 
 server.use(cors());
 server.use(useragent.express());
-server.use(logger('combined'));
+server.set('views', path.join(__dirname, './views'));
+server.set('view engine', 'ejs');
+server.use(logger('dev'));
 server.use(express.static(path.join(__dirname,'./public')));
 server.use(express.static(path.join(__dirname,'./node_modules')));
 server.use(express.json({

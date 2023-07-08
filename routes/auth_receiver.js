@@ -8,14 +8,23 @@ const urlEncoded = bodyparser.urlencoded({
     limit: "50mb",
     extended: true,
 });
+const config = require("../configs/config.js");
 
 router.post('/api/auth/esp/auth_receiver', urlEncoded, (req, res) =>{
-    const { location_auth_id, type, for_ } = req.body ?? {};
+    const { secret_key, location_auth_id, type, for_ } = req.body ?? {};
 
-    if(!location_auth_id || !type || !for_){
+    if(!location_auth_id || !type || !for_ || !secret_key){
         return res.json({
             status: "FAIL",
             error: "Please provide 'location_auth_id', 'type', 'for_' query",
+        });
+    }
+
+    // check key
+    if(secret_key !== config.api.secret_key){
+        return res.json({
+            status: "FAIL",
+            error: "key auth fail",
         });
     }
 

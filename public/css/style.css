@@ -1,0 +1,195 @@
+/**
+* Author: Kruthika
+*/
+
+/* ----------------------------------------------- */
+/* BASIC SETUP */
+/* ----------------------------------------------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    background-color: #eee;
+    color: #555;
+    font-family: 'Lato', 'Arial', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    margin-bottom: 5px;
+}
+.theme-txt-color {
+    color: #555;
+}
+/* ----------------------------------------------- */
+/* REUSABLE COMPONENTS */
+/* ----------------------------------------------- */
+
+
+.row {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+section {
+    padding: 0px 0;
+}
+
+.box {
+    padding: 1%;
+}
+
+/* ----- HEADINGS ----- */
+h1,
+h2 {
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 130%;
+    word-spacing: 2px;
+    text-align: left;
+    margin-bottom: 15px;
+    margin-top: 20px;
+    letter-spacing: 1px;
+}
+h3 {
+    font-size: 110%;
+    word-spacing: 2px;
+    text-align: left;
+    margin-bottom: 15px;
+    margin-top: 20px;
+    letter-spacing: 1px;
+}
+/***/
+
+.apiDocsLink:hover {
+    color: #555;
+    text-decoration-style: none;
+}
+
+.apiDescription {
+    font-weight: 400;
+}
+
+.container {
+    width: 1140px;
+    margin: 20px auto 0px auto /*margin: top right bottom left;*/
+}
+
+.tutorial {
+    /*background-color: #0000ff;*/
+    width: 75%;
+    float: left;
+    padding-right: 30px;
+    position: relative;
+}
+
+.rightSection {
+    /*background-color: #00ff00;*/
+    padding-left: 20px;
+    width: 25%;
+    float: left;
+}
+
+/* ----------------------------------------------- */
+/* HEADER */
+/* ----------------------------------------------- */
+
+header {
+    background-size: cover;
+    background-position: center;
+}
+
+/* Main navi */
+nav {
+    background-color: #555;
+    text-transform: uppercase;
+    
+}
+nav li {
+}
+
+nav li a {
+    font-size: 90%;
+}
+
+nav li a:link,
+nav li a:visited {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 80%;
+    border-bottom: px solid transparent;
+    transition: border-bottom 0.2s;
+}
+
+nav li a:hover,
+nav li a.active {
+    border-bottom: 3px solid #aaa;
+    background-color: #666; 
+}
+
+.tutorial-container {
+    
+}
+
+.collapsible-header {
+    padding: 10px;
+    font-size: 90%;
+    font-weight: 400;
+}
+
+.collapsible-body {
+    padding: 0px;
+    font-size: 90%;
+    font-weight: 400;
+}
+
+.collection a.collection-item {
+    display: block;
+    -webkit-transition: .25s;
+    transition: .25s;
+    color: #555;
+}
+
+.collection .collection-item.active {
+    background-color: #999;
+    color: #fff;
+}
+
+/*Tabs*/
+.tabs .tab a {
+    color: #555
+    font-size: 14px;
+}
+
+.tabs .tab a:hover, .tabs .tab a.active {
+    background-color: transparent;
+    color: #555;
+}
+
+.collapsible-body span pre {
+    padding: 10px;
+    word-wrap: break-word;
+    font-size: 80%;
+    font-weight: 800;
+    font-family: monospace;
+    background-color: #ddd;
+}
+
+.example-code {
+    padding: 10px;
+    padding-bottom: 1px;    
+    word-wrap: break-word;
+    font-size: 80%;
+    font-weight: 550;
+    font-family: monospace;
+    background-color: #ddd;
+}

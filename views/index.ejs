@@ -1,0 +1,59 @@
+<!--Author: Kruthika-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+       
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+        <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel='stylesheet' type='text/css'>
+        <title>Getting started - Rest client</title>
+    </head>
+    <body>
+            <!-- Header -->
+            <%- include("./partials/navbar.ejs") %>
+            <!-- Header -->
+
+            <section class="container">
+
+                <% for(let i = 0; i < document_data.length; i++){ %>
+                    <div class="tutorial">
+                        <div class="row">
+                            <h2><%= document_data[i].title %></h2>
+                            <hr/>
+                            <ul class="collapsible" data-collapsible="accordion">
+                            <li>
+                            <div class="collapsible-header">HTTP Request/Response</div>
+                            <div class="collapsible-body">
+                                <span>
+                                    <pre>
+<u><em>Request:</em></u>
+<%= document_data[i].req_res.request %>
+
+<u><em>Request Example:</em></u>
+<%= document_data[i].req_res.request_example %>
+
+<u><em>Response Example:</em></u>
+<%= document_data[i].req_res.response_example %>
+                                    </pre>
+                                </span>  
+                            </div>
+                            </li>
+                        </ul>
+                        </div>
+                    </div>
+                <% } %>
+
+            </section>
+    
+    </body>  
+    
+</html>
