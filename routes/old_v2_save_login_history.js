@@ -7,7 +7,7 @@ const urlEncoded = bodyparser.urlencoded({
     extended: true,
 });
 
-router.post("/api/login/old_v2_save_login_history", urlEncoded, async(req, res) =>{
+router.post("/api/old/login/old_v2_save_login_history", urlEncoded, async(req, res) =>{
     const { student_id } = req.body ?? {};   
     
     if(!student_id){
@@ -18,7 +18,7 @@ router.post("/api/login/old_v2_save_login_history", urlEncoded, async(req, res) 
     }
 
     connection.execute('SELECT * FROM student_data_table WHERE student_id=?', [student_id], (error, results, fields) =>{
-        if(err){
+        if(error){
             return res.json({
                 status: "FAIL",
                 error: `Mysql error : ERROR : ${error}`,

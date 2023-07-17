@@ -3,7 +3,7 @@ const router = express.Router();
 
 const { connection } = require("../database/connect.js");
 
-router.get('/api/login/old_check_login_history', (req, res) =>{
+router.get('/api/old/login/old_check_login_history', (req, res) =>{
     const { client_ip } = req.query ?? {}; 
     
     if(!client_ip){
