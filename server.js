@@ -11,7 +11,7 @@ const axios = require("axios");
 const useragent = require('express-useragent');
 const mysql = require("mysql2");
 const bodyparser = require("body-parser");
-
+const session = require('express-session');
 
 const urlencoded = bodyparser.urlencoded({
     limit: "50mb",
@@ -21,6 +21,15 @@ const config = require("./configs/config.js");
 
 
 server.use(cors());
+server.use(session({
+    secret: 'nonlnwza',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        secure: false, // Set to true if using HTTPS
+        maxAge: 604800000, // Time in milliseconds, e.g., 1 week
+    }
+}));
 server.use(useragent.express());
 server.set('views', path.join(__dirname, './views'));
 server.set('view engine', 'ejs');

@@ -7,7 +7,7 @@ const urlEncoded = bodyparser.urlencoded({
     extended: true,
 });
 
-router.post("/api/login/save_login_history", urlEncoded, async(req, res) =>{
+router.post("/api/login/old_save_login_history", urlEncoded, async(req, res) =>{
     const { student_id, client_ip } = req.body ?? {};
 
     if(!student_id || !client_ip){
