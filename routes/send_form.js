@@ -43,7 +43,7 @@ router.post("/api/form/send_form", urlEncoded, async(req, res) =>{
     }
 
     // หาข้อมูลจากฐานข้อมูล
-    connection.execute("SELECT * FROM student_data_table WHERE student_id = ?", [student_id], async(error, results, fields) =>{
+    connection.execute("SELECT * FROM student_data_table WHERE student_id=?", [student_id], async(error, results, fields) =>{
         if(err){
             return res.json({
                 status: "FAIL",
@@ -132,7 +132,7 @@ location_auth_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`, [
                 });
             }
     
-            res.json({
+            return res.json({
                 status: "SUCCESS",
                 error: null,
                 data: {
