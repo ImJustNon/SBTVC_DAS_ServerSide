@@ -15,7 +15,7 @@ router.post("/api/form/send_form", urlEncoded, async(req, res) =>{
         student_dorm_number,      
         student_room_number,      
         student_phone_number, 
-        id,   //-
+        student_id,   //-
         // ข้อมูลสาขา
         // ข้อมูลออกหอพัก
         leave_date,
@@ -35,7 +35,6 @@ router.post("/api/form/send_form", urlEncoded, async(req, res) =>{
     } = req.body ?? {};
 
     // เชคหากไม่พบข้อมูล id นักเรียน
-    let student_id = id;
     if(!student_id){
         return res.json({
             status: "FAIL",
@@ -45,11 +44,11 @@ router.post("/api/form/send_form", urlEncoded, async(req, res) =>{
 
     // หาข้อมูลจากฐานข้อมูล
     connection.execute("SELECT * FROM student_data_table WHERE student_id=?", [student_id], async(error, results, fields) =>{
-        if(err){
+        if(error){
             return res.json({
                 status: "FAIL",
                 error: `mysql fail : ERROR : ${error}`
-            })
+            });
         }
         if(results.length === 0){
             return res.json({
