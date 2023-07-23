@@ -15,7 +15,7 @@ router.post("/api/form/send_form", urlEncoded, async(req, res) =>{
         student_dorm_number,      
         student_room_number,      
         student_phone_number, 
-        student_id,   //-
+        student_id_fix,   //-
         // ข้อมูลสาขา
         // ข้อมูลออกหอพัก
         leave_date,
@@ -35,6 +35,7 @@ router.post("/api/form/send_form", urlEncoded, async(req, res) =>{
     } = req.body ?? {};
 
     // เชคหากไม่พบข้อมูล id นักเรียน
+    let student_id = student_id_fix;
     if(!student_id){
         return res.json({
             status: "FAIL",
