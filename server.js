@@ -23,7 +23,7 @@ const config = require("./configs/config.js");
 server.use(cors());
 server.use((req,res,next)=>{
     res.setHeader('Access-Control-Allow-Headers', '*');
-    res.setHeader('Access-Control-Allow-Origin','*');
+    res.setHeader('Access-Control-Allow-Origin','sbtvc-das-api.nonlnwza.xyz');
     res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT,PATCH,DELETE');
     res.setHeader('Access-Control-Allow-Methods','Content-Type','Authorization');
     next(); 
