@@ -19,22 +19,15 @@ const urlencoded = bodyparser.urlencoded({
 });
 const config = require("./configs/config.js");
 
-server.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*'); // Adjust the '*' to restrict access to specific origins
-    res.setHeader('Access-Control-Allow-Headers', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    next();
-  });
+
 server.use(cors());
-// server.use((req,res,next)=>{
-//     res.setHeader('Access-Control-Allow-Headers', '*');
-//     res.setHeader('Access-Control-Allow-Origin','*');
-//     res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT,PATCH,DELETE');
-//     res.setHeader('Access-Control-Allow-Methods','Content-Type','Authorization');
-//     res.setHeader('Access-Control-Allow-Methods','Content-Type','Authorization');
-//     next(); 
-// });
+server.use((req,res,next)=>{
+    res.setHeader('Access-Control-Allow-Headers', '*');
+    res.setHeader('Access-Control-Allow-Origin','*');
+    res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT,PATCH,DELETE');
+    res.setHeader('Access-Control-Allow-Methods','Content-Type','Authorization');
+    next(); 
+});
 // server.use(session({
 //     secret: 'nonlnwza',
 //     resave: false,
