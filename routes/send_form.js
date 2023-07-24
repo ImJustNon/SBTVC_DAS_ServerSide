@@ -17,6 +17,7 @@ router.post("/api/form/send_form", urlEncoded, async(req, res) =>{
         student_phone_number, 
         student_id,   //-
         // ข้อมูลสาขา
+        student_year_level,
         // ข้อมูลออกหอพัก
         leave_date,
         leave_time,
@@ -76,6 +77,7 @@ router.post("/api/form/send_form", urlEncoded, async(req, res) =>{
 student_prefix,
 student_name,
 student_lastname,
+student_year_level,
 student_dorm_number,
 student_room_number,
 student_phone_number,
@@ -101,6 +103,7 @@ location_auth_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`, [
             student_prefix,
             student_name,
             student_lastname,
+            student_year_level,
             student_dorm_number,
             student_room_number,
             student_phone_number,
