@@ -10,17 +10,17 @@ const urlEncoded = bodyparser.urlencoded({
 });
 
 
-router.get('/api/users/:student_id', async(req, res) =>{
-    const { student_id } = req.params ?? {};
+router.get('/api/admin/users/:admin_id', async(req, res) =>{
+    const { admin_id } = req.params ?? {};
 
-    if(!student_id){
+    if(!admin_id){
         return res.json({
             status: "FAIL",
-            error: `Cant find data for user ${student_id}`
+            error: `Cant find 'admin_id' from this request`
         });
     }
 
-    connection.execute("SELECT * FROM student_data_table WHERE student_id=?", [student_id], async(err, results, fields) =>{
+    connection.execute("SELECT * FROM admin_data_table WHERE admin_id=?", [admin_id], async(err, results, fields) =>{
         if(err){
             return res.json({
                 status: "FAIL",
@@ -31,7 +31,7 @@ router.get('/api/users/:student_id', async(req, res) =>{
         if(results.length === 0){
             return res.json({
                 status: "FAIL",
-                error: `Cant find data from this student_id :: ${student_id}`
+                error: `Cant find data from this admin_id :: ${admin_id}`
             });
         }
         
@@ -39,13 +39,11 @@ router.get('/api/users/:student_id', async(req, res) =>{
             status: "SUCCESS",
             error: null,
             data: {
-                results: await results,
                 id: await results[0].id,
-                student_prefix: await results[0].student_prefix,
-                student_id: await results[0].student_id,
-                student_name: await results[0].student_name,
-                student_lastname: await results[0].student_lastname,
-                student_reg_type: await results[0].student_reg_type
+                admin_id: await results[0].admin_id,
+                admin_prefix: await results[0].admin_prefix,
+                admin_name: await results[0].admin_name,
+                admin_lastname: await results[0].admin_lastname
             }
         });
     });
