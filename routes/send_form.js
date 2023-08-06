@@ -68,6 +68,7 @@ router.post("/api/form/send_form", urlEncoded, async(req, res) =>{
         const in_location_auth = "false";
         const allow = "false";
         const out_location_auth = "false";
+        const backin = "false";
         const location_auth_id = random_string(50); //สุ่มตัวอักษร 50 ตัว
     
     
@@ -99,7 +100,8 @@ timestamp,
 in_location_auth,
 allow,
 out_location_auth,
-location_auth_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`, [
+backin,
+location_auth_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`, [
             student_prefix,
             student_name,
             student_lastname,
@@ -126,6 +128,7 @@ location_auth_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
             in_location_auth,
             allow,
             out_location_auth,
+            backin,
             location_auth_id,
         ], (err, results, fields) =>{
             if(err){
