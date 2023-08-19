@@ -10,7 +10,7 @@ const urlEncoded = bodyparser.urlencoded({
 });
 
 
-router.post('/api/admin/form/update_allow', async(req, res) =>{
+router.post('/api/admin/form/update_allow', urlEncoded, async(req, res) =>{
     const { student_id, update_status } = req.body ?? {};
 
     if(!student_id){
