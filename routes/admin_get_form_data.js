@@ -133,11 +133,6 @@ router.post('/api/admin/form/get_form_data', async(req, res) =>{
             });
         });
     }
-
-    return res.json({
-        status: "FAIL",
-        error: "Invalid Filter option",
-    });
 });
 
 module.exports = router;
