@@ -13,10 +13,10 @@ const urlEncoded = bodyparser.urlencoded({
 router.post('/api/admin/form/update_allow', urlEncoded, async(req, res) =>{
     const { student_id, update_status } = req.body ?? {};
 
-    if(!student_id){
+    if(!student_id || !update_status){
         return res.json({
             status: "FAIL",
-            error: `student_id not found`,
+            error: `student_id or update_status not found`,
         });
     }
 
