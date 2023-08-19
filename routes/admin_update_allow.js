@@ -21,7 +21,7 @@ router.post('/api/admin/form/update_allow', urlEncoded, async(req, res) =>{
     }
 
     if(update_status.toUpperCase() === "TRUE"){
-        connection.execute("UPDATE send_form_date SET allow=? WHERE student_id=?", ["true", student_id], async(error, results, fields) =>{
+        connection.execute("UPDATE send_form_table SET allow=? WHERE student_id=?", ["true", student_id], async(error, results, fields) =>{
             if(error){
                 return res.json({
                     status: "FAIL",
@@ -39,7 +39,7 @@ router.post('/api/admin/form/update_allow', urlEncoded, async(req, res) =>{
         });
     }
     else if(update_status.toUpperCase() === "FALSE") {
-        connection.execute("UPDATE send_form_date SET allow=? WHERE student_id=?", ["false", student_id], async(error, results, fields) =>{
+        connection.execute("UPDATE send_form_table SET allow=? WHERE student_id=?", ["false", student_id], async(error, results, fields) =>{
             if(error){
                 return res.json({
                     status: "FAIL",
