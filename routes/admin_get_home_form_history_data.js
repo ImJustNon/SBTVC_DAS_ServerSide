@@ -10,7 +10,7 @@ const urlEncoded = bodyparser.urlencoded({
 });
 
 
-router.post('/api/admin/form/get_home_form_history_data', async(req, res) =>{
+router.post('/api/admin/form/get_home_form_history_data', urlEncoded, async(req, res) =>{
     const { form_id } = req.body ?? {};
 
     if(!form_id){
