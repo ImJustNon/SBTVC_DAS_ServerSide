@@ -50,7 +50,7 @@ router.post("/api/form/update_backin", urlEncoded, async(req, res) =>{
         }
 
         // อัปเดต โย้กข้อมูล
-        await InsertDataToNewTable({
+        await InsertDataToNewTable(res, {
             old_id: results[0].id,
             student_prefix: results[0].student_prefix,
             student_name: results[0].student_name,
@@ -84,7 +84,7 @@ router.post("/api/form/update_backin", urlEncoded, async(req, res) =>{
 });
 
 
-async function InsertDataToNewTable({   
+async function InsertDataToNewTable(res, {   
     old_id,
     student_prefix,
     student_name,
@@ -142,7 +142,7 @@ in_location_auth,
 allow,
 out_location_auth,
 backin,
-location_auth_id) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`, [parseInt(old_id), student_prefix, student_name, student_lastname, student_year_level, student_dorm_number, student_room_number, student_phone_number, student_id, student_reg_type, leave_date, leave_time, leave_for, come_date, come_time, leave_total, travel_by, parent_name, parent_lastname, parent_phone_number, image_link, image_name, timestamp, in_location_auth, allow, out_location_auth, backin, location_auth_id], async(error, results, fields) =>{
+location_auth_id) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`, [parseInt(old_id), student_prefix, student_name, student_lastname, student_year_level, student_dorm_number, student_room_number, student_phone_number, student_id, student_reg_type, leave_date, leave_time, leave_for, come_date, come_time, leave_total, travel_by, parent_name, parent_lastname, parent_phone_number, image_link, image_name, timestamp, in_location_auth, allow, out_location_auth, "true", location_auth_id], async(error, results, fields) =>{
     if(error){
         return res.json({
             status: "FAIL",
