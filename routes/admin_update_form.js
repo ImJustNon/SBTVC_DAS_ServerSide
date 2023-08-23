@@ -20,7 +20,7 @@ router.post('/api/admin/form/update_form/update_out_location_auth', urlEncoded, 
         });
     }
 
-    if(status !== 'true' || status !== 'false'){
+    if(status !== 'true' && status !== 'false'){
         return res.json({
             status: "FAIL",
             error: `invalid status option`,
@@ -55,7 +55,7 @@ router.post('/api/admin/form/update_form/update_in_location_auth', urlEncoded, a
         });
     }
 
-    if(status !== 'true' || status !== 'false'){
+    if(status !== 'true' && status !== 'false'){
         return res.json({
             status: "FAIL",
             error: `invalid status option`,
