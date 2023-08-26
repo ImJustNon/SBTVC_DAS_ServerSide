@@ -20,5 +20,8 @@ module.exports = {
     },
     api: {
         secret_key: "nonlnwza", // key for auth scanner to api
+    },
+    apis: {
+        line_notification_token: process.env.LINE_NOTIFICATION_TOKEN,
     }
 }
