@@ -9,8 +9,9 @@ const urlEncoded = bodyparser.urlencoded({
     extended: true,
 });
 const config = require("../configs/config.js");
+const { default: axios } = require("axios");
 
-router.post('/api/auth/esp/auth_receiver', urlEncoded, (req, res) =>{
+router.post('/api/auth/esp/auth_receiver', urlEncoded, async(req, res) =>{
     const { secret_key, location_auth_id, type, for_ } = req.body ?? {};
 
     if(!location_auth_id || !type || !for_ || !secret_key){
@@ -30,7 +31,7 @@ router.post('/api/auth/esp/auth_receiver', urlEncoded, (req, res) =>{
 
     if(type === "home"){
         if(for_ === "out"){
-            connection.execute('UPDATE send_form_table SET out_location_auth = ? WHERE location_auth_id = ?', ["true", location_auth_id], (err, results, fields) =>{
+            connection.execute('UPDATE send_form_table SET out_location_auth = ? WHERE location_auth_id = ?', ["true", location_auth_id], async(err, results, fields) =>{
                 if(err){
                     return res.json({
                         status: "FAIL",
@@ -38,6 +39,7 @@ router.post('/api/auth/esp/auth_receiver', urlEncoded, (req, res) =>{
                     });
                 }
 
+                await SendNotification(location_auth_id);
                 return res.json({
                     status: "SUCCESS",
                     error: null,
@@ -70,5 +72,28 @@ router.post('/api/auth/esp/auth_receiver', urlEncoded, (req, res) =>{
         
     }
 });
+
+
+
+async function SendNotification(auth_id){
+    connection.execute("SELECT student_id FROM send_form_table WHERE location_auth_id=?", [auth_id], async(error, results, fields) =>{
+        if(error) return 0;
+        if(results.length === 0) return 0;
+
+        const response = axios.post(`${config.server.host}:${config.server.port}/api/notification/line/send_notification`, {
+            student_id: results[0].student_id
+        }, {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+        });
+
+        if(response === "FAIL"){
+            return 0;
+        }
+
+        return 1;
+    });
+} 
 
 module.exports = router;
