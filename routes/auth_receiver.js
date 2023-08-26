@@ -80,7 +80,7 @@ async function SendNotification(auth_id){
         if(error) return 0;
         if(results.length === 0) return 0;
 
-        const response = axios.post(`https://127.0.0.1/api/notification/line/send_notification`, {
+        const response = axios.post(`https://sbtvc-das-api.nonlnwza.xyz/api/notification/line/send_notification`, {
             student_id: results[0].student_id
         }, {
             headers: {
