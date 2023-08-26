@@ -55,7 +55,7 @@ router.post('/api/notification/line/send_notification', urlEncoded, async(req, r
                         + `เดินทางโดย  :: ${results[0].travel_by} \n` 
                         + `ชื่อผู้ปกครอง  :: ${results[0].parent_name} ${results[0].parent_lastname} \n` 
                         + `เบอร์ผู้ปกครอง  :: ${results[0].parent_phone_number} \n` 
-                        + `Timestamp  :: ${new Date(parseInt(results[0].timestamp))} \n` 
+                        + `Timestamp  :: ${(new Date(parseInt(results[0].timestamp + (7 * 60 * 60 * 1000)))).toUTCString()} \n` 
                         + `\n************************* การยืนยัน ************************* \n\n` 
                         + `สถานที่ยืนยัน (ออก)  :: ${results[0].out_location_auth === "true" ? "✅ ยืนยันเเล้ว" : "❌ ยังไม่ได้ยืนยัน"} \n` 
                         + `อนุมัติ  :: ${results[0].allow === "true" ? "✅ อนุมัติเเล้ว" : "❌ ยังไม่อนุมัติ"} \n` 
