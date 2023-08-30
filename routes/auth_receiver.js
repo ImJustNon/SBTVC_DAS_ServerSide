@@ -76,7 +76,7 @@ router.post('/api/auth/esp/auth_receiver', urlEncoded, async(req, res) =>{
 
 
 async function SendNotification(auth_id){
-    new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         connection.execute("SELECT student_id FROM send_form_table WHERE location_auth_id=?", [auth_id], async(error, results, fields) =>{
             if(error) return 0;
             if(results.length === 0) return 0;
@@ -90,9 +90,9 @@ async function SendNotification(auth_id){
             });
     
             if(response === "FAIL"){
-                return resolve();
+                resolve();
             }
-            return resolve();
+            resolve();
         });
     });
 } 
