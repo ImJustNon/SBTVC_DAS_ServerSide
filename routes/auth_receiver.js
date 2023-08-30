@@ -44,7 +44,7 @@ router.post('/api/auth/esp/auth_receiver', urlEncoded, async(req, res) =>{
                     if(status === 0){
                         return res.json({
                             status: "SUCCESS",
-                            error: 'Line notification dont send',
+                            error: 'Line notification doesnt send',
                         });
                     }
 
