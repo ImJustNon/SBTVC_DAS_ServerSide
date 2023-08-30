@@ -39,16 +39,41 @@ router.post('/api/auth/esp/auth_receiver', urlEncoded, async(req, res) =>{
                     });
                 }
 
-                await SendNotification(location_auth_id).then(() =>{
+                // send line notificaton
+                connection.execute("SELECT student_id FROM send_form_table WHERE location_auth_id=?", [location_auth_id], async(error, results, fields) =>{
+                    if(error){
+                        return res.json({
+                            status: "FAIL",
+                            error: `Mysql error :: ${error}`,
+                        });
+                    }
+                    if(results.length === 0){
+                        return res.json({
+                            status: "FAIL",
+                            error: `Cant find data from this ID : ${location_auth_id}`,
+                        });
+                    }
+
+                    const response = await axios.post(`${config.server.domain}/api/notification/line/send_notification`, {
+                        student_id: results[0].student_id
+                    }, {
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });
+
+                    if(response.data.status === "FAIL"){
+                        return res.json({
+                            status: "FAIL",
+                            error: response.data.error,
+                        });
+                    }
+
                     return res.json({
                         status: "SUCCESS",
                         error: null,
-                        data: {
-                            results: results,
-                        }
                     });
                 });
-                
             });
         }
         if(for_ === "in"){
@@ -77,26 +102,26 @@ router.post('/api/auth/esp/auth_receiver', urlEncoded, async(req, res) =>{
 
 
 
-async function SendNotification(auth_id){
-    return new Promise((resolve, reject) => {
-        connection.execute("SELECT student_id FROM send_form_table WHERE location_auth_id=?", [auth_id], async(error, results, fields) =>{
-            if(error) return 0;
-            if(results.length === 0) return 0;
+// async function SendNotification(auth_id){
+//     return new Promise((resolve, reject) => {
+//         connection.execute("SELECT student_id FROM send_form_table WHERE location_auth_id=?", [auth_id], async(error, results, fields) =>{
+//             if(error) return 0;
+//             if(results.length === 0) return 0;
     
-            const response = axios.post(`https://sbtvc-das-api.nonlnwza.xyz/api/notification/line/send_notification`, {
-                student_id: results[0].student_id
-            }, {
-                headers: {
-                  'Content-Type': 'application/json'
-                }
-            });
+//             const response = await axios.post(`https://sbtvc-das-api.nonlnwza.xyz/api/notification/line/send_notification`, {
+//                 student_id: results[0].student_id
+//             }, {
+//                 headers: {
+//                   'Content-Type': 'application/json'
+//                 }
+//             });
     
-            if(response === "FAIL"){
-                resolve();
-            }
-            resolve();
-        });
-    });
-} 
+//             if(response === "FAIL"){
+//                 resolve();
+//             }
+//             resolve();
+//         });
+//     });
+// } 
 
 module.exports = router;
