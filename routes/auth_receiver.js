@@ -39,14 +39,16 @@ router.post('/api/auth/esp/auth_receiver', urlEncoded, async(req, res) =>{
                     });
                 }
 
-                await SendNotification(location_auth_id);
-                return res.json({
-                    status: "SUCCESS",
-                    error: null,
-                    data: {
-                        results: results,
-                    }
+                await SendNotification(location_auth_id).then(() =>{
+                    return res.json({
+                        status: "SUCCESS",
+                        error: null,
+                        data: {
+                            results: results,
+                        }
+                    });
                 });
+                
             });
         }
         if(for_ === "in"){
