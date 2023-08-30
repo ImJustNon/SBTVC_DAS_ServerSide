@@ -76,23 +76,24 @@ router.post('/api/auth/esp/auth_receiver', urlEncoded, async(req, res) =>{
 
 
 async function SendNotification(auth_id){
-    connection.execute("SELECT student_id FROM send_form_table WHERE location_auth_id=?", [auth_id], async(error, results, fields) =>{
-        if(error) return 0;
-        if(results.length === 0) return 0;
-
-        const response = axios.post(`https://sbtvc-das-api.nonlnwza.xyz/api/notification/line/send_notification`, {
-            student_id: results[0].student_id
-        }, {
-            headers: {
-              'Content-Type': 'application/json'
+    new Promise((resolve, reject) => {
+        connection.execute("SELECT student_id FROM send_form_table WHERE location_auth_id=?", [auth_id], async(error, results, fields) =>{
+            if(error) return 0;
+            if(results.length === 0) return 0;
+    
+            const response = axios.post(`https://sbtvc-das-api.nonlnwza.xyz/api/notification/line/send_notification`, {
+                student_id: results[0].student_id
+            }, {
+                headers: {
+                  'Content-Type': 'application/json'
+                }
+            });
+    
+            if(response === "FAIL"){
+                return resolve();
             }
+            return resolve();
         });
-
-        if(response === "FAIL"){
-            return 0;
-        }
-
-        return 1;
     });
 } 
 
