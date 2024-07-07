@@ -220,6 +220,11 @@ braces@~3.0.2:
   dependencies:
     fill-range "^7.0.1"
 
+bwip-js@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/bwip-js/-/bwip-js-4.5.0.tgz#281fd8730c40c1ec56b7a19047f4c832f0713800"
+  integrity sha512-B+CnmGWZ5rf0CnlMjOW2u/xyl+B7nylK1GAHI2NrF1DZfsdwBbMqBK50xlJPtMtOltvALPIbyznhWFGnCQbH+A==
+
 bytes@3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-3.1.2.tgz#8b0beeb98605adf1b128fa4386403c009e0221a5"
